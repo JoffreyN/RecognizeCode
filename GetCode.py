@@ -2,7 +2,6 @@ import os,re
 from PIL import Image
 from libsvm.python.svm import *
 from libsvm.python.svmutil import *
-#https://passport.55188.com/index/validate/reg_mobile
 
 def GetCode(picpath):#使用libsvm训练模型
     code=[]
@@ -12,7 +11,7 @@ def GetCode(picpath):#使用libsvm训练模型
     im=de_noise(im)#降噪
     #im.show()
     Imgs=CropImgs(im)#切割后的图片列表
-    model=svm_load_model(r'D:\study\pyStudy\SMSGun\Training\model.txt')#打开训练文件
+    model=svm_load_model(r'.\Training\model.txt')#打开训练文件
     for img in Imgs:
         pixel_cnt_list=GetFeature(img,'img')        
         tempath=os.path.join(os.getcwd(),'temp.txt')#临时文件，用于存储将要识别的图片的特征
@@ -116,4 +115,4 @@ def test(dpath):#识别目录下的验证码图片，并将识别结果作为图
         codelist.append(code)
 #test('E:\\Zp\\Desktop\\codes')
 if __name__ == '__main__':
-    print(GetCode(r'D:\study\pyStudy\SMSGun\codes\15.png'))
+    print(GetCode(r'.\codes\15.png'))
