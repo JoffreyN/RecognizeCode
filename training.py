@@ -20,7 +20,7 @@ def croptest(dpath):#将目录下的验证码图片切割并保存到Training目
             n+=1
             img.save(os.path.join(trainpath,'%d%s'%(n,suffix)))
     return trainpath
-#croptest(r'F:\SMSGun\codes')
+#croptest(r'.\codes')
 
 def GetFeatureFile(Fpath):#生成带特征值和标记值的libSVM向量文件,feature.txt
     #Fpath为原子图片所在目录的父目录，即Training目录，需要将里面的图片分类
@@ -38,6 +38,6 @@ def Train_SVM_model(PathToFeatureFile):#生成训练模型文件，model.txt
     svm_save_model(modelpath,model)   
 
 if __name__ == '__main__':
-    #croptest(r'F:\SMSGun\codes')#先运行这行，把下面两行注释；再把这行注释，运行下面两行
-    featurePath=GetFeatureFile(r'F:\SMSGun\Training')
+    #croptest(r'.\codes')#先运行这行，把下面两行注释；再把这行注释，运行下面两行
+    featurePath=GetFeatureFile(r'.\Training')
     Train_SVM_model(featurePath)
