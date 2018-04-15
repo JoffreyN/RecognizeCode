@@ -11,5 +11,12 @@ pip install pillow
 1. 将爬取的验证码图片保存到codes目录下
 2. 先只运行training.py中croptest()函数，将会把验证码图片切割为单个图片，并自动保存到Training目录，然后手动分类，一类一个文件夹
 3. 分类完成后将croptest()函数注释，然后运行training.py脚本（注意路径），将自动在Training目录下生成特征文件feature.txt及训练文件model.txt
-4. 修改GetCode.py里需要识别的图片路径后运行，成功
+4. 运行GetCode.py，识别成功！
 5. 如需识别其他类型的验证码图片，则需另外训练，此处只提供一种识别方案
+## GetCodePic.py说明
+1. 用于爬取验证码图片，自动保存到codes目录;
+2. 使用urllib爬取，获取content_type字段判断图片后缀名
+## training.py说明
+1. 用于建立LibSVM训练库，生成训练模型文件；
+2. croptest()函数用于将codes目录下的验证码图片切割为只含有单个元素的图片，并保存到Training目录，之后需要手动分类，分类好的效果如Training下的0~9文件夹；
+3. GetFeatureFile()函数用于生成带特征值和标记值的libSVM向量文件，即Training目录下的feature.txt；在遍历目录时使用islice迭代，跳过第一个元素
