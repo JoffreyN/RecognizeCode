@@ -38,6 +38,6 @@ def Train_SVM_model(PathToFeatureFile):#生成训练模型文件，model.txt
     svm_save_model(modelpath,model)   
 
 if __name__ == '__main__':
-    #croptest(r'.\codes')#先运行这行，把下面两行注释；再把这行注释，运行下面两行
-    featurePath=GetFeatureFile(r'.\Training')
-    Train_SVM_model(featurePath)
+    croptest(r'.\codes')#先运行这行，把下面两行注释；再把这行注释，运行下面两行
+    #featurePath=GetFeatureFile(r'.\Training')
+    #Train_SVM_model(featurePath)
