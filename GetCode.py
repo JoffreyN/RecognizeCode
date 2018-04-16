@@ -5,13 +5,13 @@ from libsvm.python.svmutil import *
 
 def GetCode(picpath):#使用libsvm训练模型
     code=[]
+    model=svm_load_model(r'.\Training\model.txt')#打开训练文件
     im=Image.open(picpath).convert('L')#打开图片，并转化为灰度图
     im=im.point([0]*150+[1]*(256-150),'1')#二值化
     #im.show()
     im=de_noise(im)#降噪
     #im.show()
     Imgs=CropImgs(im)#切割后的图片列表
-    model=svm_load_model(r'.\Training\model.txt')#打开训练文件
     for img in Imgs:
         pixel_cnt_list=GetFeature(img,'img')        
         tempath=os.path.join(os.getcwd(),'temp.txt')#临时文件，用于存储将要识别的图片的特征
